@@ -1,15 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; // ✅ add this
 import 'package:mediquery/screens/home_screen.dart';
 import 'package:mediquery/screens/dashboard_screen.dart';
 import 'package:mediquery/screens/about_screen.dart';
 import 'package:mediquery/screens/contact_screen.dart';
 
-void main() {
-  // Disable Impeller for emulators / software rendering
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // ✅ load env file
+  await dotenv.load(fileName: ".env");
+
   if (!kIsWeb) {
-    WidgetsFlutterBinding.ensureInitialized();
-    // debugDisableImpeller = true; // Impeller safe mode
+    // debugDisableImpeller = true; // optional
   }
   runApp(const MyApp());
 }

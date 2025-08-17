@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../widgets/navigation_dock.dart' show NavigationDock;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -17,11 +18,18 @@ class _ContactScreenState extends State<ContactScreen> {
   final TextEditingController _messageController = TextEditingController();
   bool _isSubmitting = false;
 
-  // TODO: Replace with your actual Web3Forms API key
-  final String _apiKey = "408f0b49-e79f-47f0-ad3e-e11724ccc28a";
+  // Get API key with proper error handling
+  String? get _apiKey => dotenv.env['FORM_API_KEY'];
   
   Future<void> _submitForm() async {
     if (!_formKey.currentState!.validate()) return;
+
+    // Check if API key is available
+    final apiKey = _apiKey;
+    if (apiKey == null || apiKey.isEmpty) {
+      _showErrorSnackBar("Configuration error: FORM_API_KEY not found in .env file");
+      return;
+    }
 
     setState(() => _isSubmitting = true);
 
@@ -30,7 +38,7 @@ class _ContactScreenState extends State<ContactScreen> {
       
       // Create form data
       Map<String, dynamic> formData = {
-        "access_key": _apiKey,
+        "access_key": apiKey,
         "subject": "New Feedback from MediQuery App",
         "name": _nameController.text.trim(),
         "email": _emailController.text.trim(),
@@ -139,6 +147,13 @@ class _ContactScreenState extends State<ContactScreen> {
   }
 
   void _openFeedbackForm() {
+    // Check if API key is available before opening form
+    final apiKey = _apiKey;
+    if (apiKey == null || apiKey.isEmpty) {
+      _showErrorSnackBar("Configuration error: Please add FORM_API_KEY to your .env file");
+      return;
+    }
+
     showDialog(
       context: context,
       barrierDismissible: false, // Prevent dismissing during submission

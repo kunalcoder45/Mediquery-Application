@@ -49,6 +49,9 @@ dependencies:
   # iOS style icons
   cupertino_icons: ^1.0.8
 
+  # enviromentals
+  flutter_dotenv: ^5.1.0 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,6 +76,7 @@ flutter:
   assets:
     - assets/images/doctor.png
     - assets/images/hero.png
+    - .env
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
