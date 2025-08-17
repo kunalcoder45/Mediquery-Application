@@ -1,16 +1,20 @@
-# mediquery
+# MediQuery
+A Smart Companion for Quick Health Guidance
 
-A new Flutter project.
+## Overview
+MediQuery is an innovative web application designed to be your instant health companion. It provides quick, AI-powered guidance for common health concerns, helping users find suggestions for over-the-counter medications and locate nearby pharmacies based on their symptoms.
 
-## Getting Started
+## Features
+- **AI-Powered Symptom Analysis**: Accurately analyze user-described symptoms to provide relevant medication suggestions.
+- **Over-the-Counter Medication Suggestions**: Offers guidance on suitable over-the-counter medicines for a wide range of common ailments.
+- **Pharmacy Locator**: Helps users find nearby pharmacies, making it easy to purchase suggested medications.
+- **Intuitive User Interface**: A clean and easy-to-use design ensures a seamless user experience.
 
-This project is a starting point for a Flutter application.
+## Technologies Used
+- **Frontend**: React.js, Next.js
+- **Backend**: Node.js, Express.js
+- **Gemini**
+- **Deployment**: Vercel
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Medical Disclaimer
+**Please Note**: MediQuery is not a substitute for professional medical advice. Always consult with a qualified healthcare professional for any medical concerns or before making any decisions related to your health. The information provided by this application is for informational purposes only.
